@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudanteController;
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\TurmaController;
+use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\MatriculaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +29,9 @@ Route::get('/estudantes/{id}', [EstudanteController::class, 'show'])
 ->name('estudantes.show');
 
 Route::resource('alunos', AlunoController::class);
+
+Route::resource('turmas', TurmaController::class);
+
+Route::resource('professores', ProfessorController::class);
+
+Route::resource('matriculas', MatriculaController::class);

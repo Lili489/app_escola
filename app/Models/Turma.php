@@ -2,21 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Professor;
 use App\Models\Matricula;
 
-class Aluno extends Model
+class Turma extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'nome',
-        'email',
-        'telefone',
-        'data_nascimento',
-        'curso'
+        'turno',
+        'professor_id'
     ];
+
+    public function professor()
+    {
+        return $this->belongsTo(Professor::class);
+    }
 
     public function matriculas()
     {

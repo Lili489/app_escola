@@ -23,32 +23,38 @@ class AlunoController extends Controller
     {
         Aluno::create($request->all());
 
-        return redirect()->route('alunos.index');
+        return redirect('/alunos');
+    }
+
+    public function show($id)
+    {
+        $aluno = Aluno::findOrFail($id);
+
+        return view('alunos.show', compact('aluno'));
     }
 
     public function edit($id)
-{
-    $aluno = Aluno::findOrFail($id);
+    {
+        $aluno = Aluno::findOrFail($id);
 
-    return view('alunos.edit', compact('aluno'));
-}
+        return view('alunos.edit', compact('aluno'));
+    }
 
-public function update(Request $request, $id)
-{
-    $aluno = Aluno::findOrFail($id);
+    public function update(Request $request, $id)
+    {
+        $aluno = Aluno::findOrFail($id);
 
-    $aluno->update($request->all());
+        $aluno->update($request->all());
 
-    return redirect()->route('alunos.index');
-}
+        return redirect()->route('alunos.index');
+    }
 
-public function destroy($id)
-{
-    $aluno = Aluno::findOrFail($id);
+    public function destroy($id)
+    {
+        $aluno = Aluno::findOrFail($id);
 
-    $aluno->delete();
+        $aluno->delete();
 
-    return redirect()->route('alunos.index');
-}
-
+        return redirect()->route('alunos.index');
+    }
 }
