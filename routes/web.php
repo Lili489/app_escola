@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/ecoquiz', function () {
+    return view('ecoquiz.index');
+});
+
 Route::get('/estudantes', [EstudanteController::class, 'index'])
 ->name('estudantes.index');
 
@@ -35,3 +39,4 @@ Route::resource('turmas', TurmaController::class);
 Route::resource('professores', ProfessorController::class);
 
 Route::resource('matriculas', MatriculaController::class);
+

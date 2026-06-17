@@ -1,25 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Alunos</title>
-</head>
-<body>
+@extends('layouts.app')
 
-<h1>Lista de Alunos</h1>
+@section('title', 'Lista de Alunos')
 
-<a href="/alunos/create">Cadastrar Novo Aluno</a>
+@section('content')
 
-<br><br>
+<div class="card p-4">
 
-<ul>
-    @foreach($alunos as $aluno)
-        <li>
-            <a href="/alunos/{{ $aluno->id }}">
-                {{ $aluno->nome }}
-            </a>
-        </li>
-    @endforeach
-</ul>
+    <div class="d-flex justify-content-between mb-3">
 
-</body>
-</html>
+        <h2>Lista de Alunos</h2>
+
+        <a href="{{ route('alunos.create') }}" class="btn btn-success">
+            Novo Aluno
+        </a>
+
+    </div>
+
+    <table class="table table-striped">
+
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach($alunos as $aluno)
+
+                <tr>
+
+                    <td>{{ $aluno->id }}</td>
+
+                    <td>{{ $aluno->nome }}</td>
+
+                    <td>
+
+                        <a href="{{ route('alunos.show', $aluno->id) }}"
+                           class="btn btn-primary btn-sm">
+                            Ver
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            @endforeach
+
+        </tbody>
+
+    </table>
+
+</div>
+
+@endsection
